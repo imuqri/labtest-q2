@@ -20,7 +20,6 @@ def main():
     while True:
         # establish a connection
         clientsocket, addr = serversocket.accept()      
-
         print("Got a connection from %s" % str(addr))
 
         temp_f = clientsocket.recv(1024).decode()
