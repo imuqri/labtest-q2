@@ -1,21 +1,18 @@
 import socket
 
+# function to convert fahrenheit input to celsius
 def fahrenheit_to_celsius(temp_f):
     temp_c = (temp_f - 32) * (5/9)
     return temp_c
 
 def main():
-    # create a socket object
+    # create a socket 
     serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
 
-    # get local machine name
-    host = socket.gethostname()                           
-    port = 8080
+    # bind the socket to host, and a port
+    serversocket.bind(("192.168.56.102", 8080))                                  
 
-    # bind the socket to a public host, and a port
-    serversocket.bind((host, port))                                  
-
-    # become a server socket
+    # listening for connection
     serversocket.listen(1)
 
     print("Server started...waiting for client")
@@ -31,6 +28,6 @@ def main():
         temp_c = round(temp_c,2)
         temp_c = str(temp_c)
         clientsocket.send(temp_c.encode())
-        clientsocket.close()
 
+#execute main function
 main()

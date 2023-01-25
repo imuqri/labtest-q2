@@ -1,16 +1,11 @@
 import socket
 
 def main():
-    # create a socket object
+    # create a socket
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
 
-    # get local machine name
-    host = socket.gethostname()                           
-
-    port = 8080
-
-    # connection to hostname on the port.
-    s.connect((host, port))                               
+    # connection to server on the port.
+    s.connect(("192.168.56.102", 8080))                               
 
     temp_f = input("Enter temperature in Fahrenheit: ")
     s.send(temp_f.encode())
